@@ -45,6 +45,8 @@ services:
         PMA_HOST: db
       ports:
         - "8080:80"
+      networks:
+        - roster99
 
     nginx:
       image: nginx:1.17-alpine
