@@ -53,10 +53,20 @@ services:
       container_name: nginx
       restart: unless-stopped
       ports:
-        - 8000:80
+        - 8002:80
       volumes:
         - ./:/var/www
         - ./docker-compose/nginx:/etc/nginx/conf.d
+      networks:
+        - roster99
+
+    npm:
+      image: node:latest
+      container_name: npm
+      volumes:
+        - ./:/var/www
+      working_dir: /var/www
+      entrypoint: ['npm']
       networks:
         - roster99
 
