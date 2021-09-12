@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreOrganizationRequest;
+use App\Http\Requests\UpdateOrganizationRequest;
 use App\Models\Organization;
 use Illuminate\Http\Request;
+use Toastr;
 
 class OrganizationController extends Controller
 {
@@ -14,7 +17,8 @@ class OrganizationController extends Controller
      */
     public function index()
     {
-        return view('organization.index');
+        $organizations = Organization::paginate(10);
+        return view('organization.index',compact('organizations'));
     }
 
     /**
@@ -24,18 +28,18 @@ class OrganizationController extends Controller
      */
     public function create()
     {
-        //
+        return view('organization.createOrUpdate');
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param StoreOrganizationRequest $request
+     * 
      */
-    public function store(Request $request)
+    public function store(StoreOrganizationRequest $request)
     {
-        //
+        auth()->user()->organization()->create($request->validated());
+        
+        return redirect(route('organization.index'))->with('message','Organization added Successfully');
     }
 
     /**
@@ -46,7 +50,7 @@ class OrganizationController extends Controller
      */
     public function show(Organization $organization)
     {
-        //
+        return redirect(route('organization.index'));
     }
 
     /**
@@ -57,7 +61,7 @@ class OrganizationController extends Controller
      */
     public function edit(Organization $organization)
     {
-        //
+        return view('organization.createOrUpdate', compact('organization'));
     }
 
     /**
@@ -67,9 +71,19 @@ class OrganizationController extends Controller
      * @param  \App\Models\Organization  $organization
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Organization $organization)
+    public function update(UpdateOrganizationRequest $request, Organization $organization)
     {
-        //
+        $organization->update($request->validated());
+
+        return redirect(route('organization.index'))->with('message','Organization updated Successfully');
+
+        /*         ->with('message','Data added Successfully');
+
+        ->with('error','Data Deleted');
+
+        ->with('Warning','Are you sure you want to delete? ');
+
+        ->with('info','This is xyz information'); */
     }
 
     /**
@@ -80,6 +94,7 @@ class OrganizationController extends Controller
      */
     public function destroy(Organization $organization)
     {
-        //
+        $organization->delete();
+        return redirect(route('organization.index'))->with('message','Organization deleted Successfully');
     }
 }

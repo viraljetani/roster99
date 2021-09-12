@@ -12,9 +12,13 @@
         "infyomlabs/laravel-ui-adminlte": "^3.1",
         "laravel/fortify": "^1.7",
         "laravel/framework": "^8.12",
-        "laravel/tinker": "^2.5"
+        "laravel/tinker": "^2.5",
+        "laravelcollective/html": "^6.2",
+        "mekaeil/laravel-user-management": "^0.8.2"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.6",
+        "barryvdh/laravel-ide-helper": "^2.10",
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
         "laravel/sail": "^1.0.1",
@@ -48,7 +52,9 @@
     },
     "extra": {
         "laravel": {
-            "dont-discover": []
+            "dont-discover": [
+                "barryvdh/laravel-ide-helper"
+            ]
         }
     },
     "config": {

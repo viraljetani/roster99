@@ -21,7 +21,7 @@ Route::get('/', function () {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('organizations', [App\Http\Controllers\OrganizationController::class,'index'])->name('organizations');
+    Route::resource('/organization', "App\Http\Controllers\OrganizationController");
 });
 
 Auth::routes();
