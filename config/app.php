@@ -166,8 +166,6 @@ return [
          * Package Service Providers...
          */
 
-        \Mekaeil\LaravelUserManagement\LaravelUserManagementProvider::class,
-
         /*
          * Application Service Providers...
          */
