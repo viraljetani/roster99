@@ -16,12 +16,11 @@ class CreateUsersTable extends Migration
         $table = config("laravel_user_management.users_table");
         Schema::create($table, function (Blueprint $table) {
             $table->increments('id');
-            $table->string('first_name');
-            $table->string('last_name');
+            $table->string('name');
             $table->string('email')->nullable()->unique();
             $table->string('mobile')->nullable()->unique();
             $table->string('password');
-            $table->enum('status',['pending','accepted','blocked'])->default('pending');
+            $table->enum('status',['pending','accepted','blocked'])->default('accepted');
             $table->boolean('email_verified')->default(false);
             $table->boolean('mobile_verified')->default(false);
             $table->rememberToken();
