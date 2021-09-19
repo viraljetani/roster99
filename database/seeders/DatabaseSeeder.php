@@ -14,14 +14,6 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
-        /*
-        |--------------------------------------------------------------------------
-        |  SEEDERS FOR LARAVEL USER MANAGEMENT
-        |--------------------------------------------------------------------------
-        |
-        */
-        $this->call(RoleTableSeeder::class);
-        $this->call(PermissionTableSeeder::class);
-        $this->call(DepartmentTableSeeder::class);
+        
     }
 }

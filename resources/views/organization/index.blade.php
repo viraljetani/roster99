@@ -38,7 +38,7 @@
                 @foreach($organizations as $org)
                 <tr>
                     <td>{{ $loop->index + 1 }}.</td>
-                    <td>{{$org->name}}</td>
+                    <td>{{ucwords($org->name)}}</td>
                     <td>
                         {{$org->email}}
                     </td>

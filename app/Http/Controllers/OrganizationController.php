@@ -37,7 +37,7 @@ class OrganizationController extends Controller
      */
     public function store(StoreOrganizationRequest $request)
     {
-        auth()->user()->organization()->create($request->validated());
+        Organization::create($request->validated());
         
         return redirect(route('organization.index'))->with('message','Organization added Successfully');
     }

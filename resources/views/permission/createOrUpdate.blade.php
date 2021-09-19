@@ -5,7 +5,7 @@
             <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                <h1 class="m-0">Create New Organization</h1>
+                <h1 class="m-0">Permission</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
         
@@ -15,10 +15,10 @@
         </div>
         <div class="container-fluid">
             
-                @if(isset($organization))
-                    {{ Form::model($organization, ['route' => ['organization.update', $organization->id], 'method' => 'patch']) }}
+                @if(isset($permission))
+                    {{ Form::model($permission, ['route' => ['permission.update', $permission->id], 'method' => 'patch']) }}
                 @else
-                    {{ Form::open(['route' => 'organization.store']) }}
+                    {{ Form::open(['route' => 'permission.store']) }}
                 @endif
                 <div class="col">
             <!-- Input addon -->
@@ -28,17 +28,14 @@
                             </div>
                             <div class="card-body">
                                         <div class="form-group w-100">
-                                            <input name="name" type="text" value="{!! isset($organization) ? $organization->name : "" !!}" required="required" class="form-control form-control-lg" placeholder="Organization" aria-label="Organization">
+                                            <input name="name" type="text" value="{!! isset($permission) ? $permission->name : "" !!}" required="required" class="form-control form-control-lg" placeholder="Permission" aria-label="permission">
                                         </div>
-                                        <div class="form-group w-100">
-                                            <input name="email" type="email" value="{!! isset($organization) ? $organization->email : "" !!}" required="required" class="form-control form-control-lg" placeholder="abc@example.com" aria-label="Email">
-                                        </div>
-
+                                        
                                         <x-error></x-error>
                             
                         </div> <!-- /.card-body -->
                         <div class="card-footer">
-                            <input type="submit" class="btn btn-info" name="save" value="{!! isset($organization) ? "Update Organization" : "Create Organiation"!!}" >
+                            <input type="submit" class="btn btn-info" name="save" value="{!! isset($permission) ? "Update permission" : "Create permission"!!}" >
                             <input type="reset" class="btn btn-default float-right" name="reset" value="Reset" >
                         </div>
                         

@@ -20,8 +20,14 @@ Route::get('/', function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth','role:super-admin'])->group(function () {
     Route::resource('/organization', "App\Http\Controllers\OrganizationController");
+    Route::resource('/role',"App\Http\Controllers\RoleController");
+    Route::resource('/permission',"App\Http\Controllers\PermissionController");
+});
+
+Route::middleware(['auth','can:manage-employees'])->group(function () {
+    Route::resource('/user', "App\Http\Controllers\UserController");
 });
 
 Auth::routes();

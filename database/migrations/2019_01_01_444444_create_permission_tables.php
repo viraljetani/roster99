@@ -22,7 +22,7 @@ class CreatePermissionTables extends Migration
             $table->string('title')->nullable();
             $table->string('guard_name');
             $table->string('module')->nullable();
-            $table->text('description')->nullable();
+            $table->text('description')->nullable();    
 
             $table->timestamps();
 

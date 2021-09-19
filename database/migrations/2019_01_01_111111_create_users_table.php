@@ -13,7 +13,7 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        $table = config("laravel_user_management.users_table");
+        $table = 'users';
         Schema::create($table, function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');

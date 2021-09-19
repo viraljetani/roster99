@@ -13,7 +13,7 @@ class Organization extends Model
 
     public function user() {
 
-        $this->belongsTo(User::class);
+        $this->hasMany(User::class);
     }
 
 }
